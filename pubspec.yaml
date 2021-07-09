@@ -1,12 +1,10 @@
-name: freshchat_sdk
+name: freshchat_flutter
 description: Freshchat is a modern messaging software for sales and customer engagement teams. freshchat_sdk (BETA) will help you integrate chat support in your mobile apps with null safety.
 repository: https://github.com/araafat3/freshChat-1.0.0
 
 # Whenever this version is updated, it must also be updated in Freshchat::getSdkVersion()
 version: 1.0.0
 homepage: https://github.com/araafat3/freshChat-1.0.0
-authors:
-  -  Ahmed Raafat
 
 environment:
   sdk: ">=2.13.0 <3.0.0"
