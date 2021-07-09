@@ -15,11 +15,11 @@ enum JwtTokenStatus {
 
 final StreamController restoreIdStreamController = StreamController.broadcast();
 final StreamController freshchatEventStreamController =
-    StreamController.broadcast();
+StreamController.broadcast();
 final StreamController messageCountUpdatesStreamController =
-    StreamController.broadcast();
+StreamController.broadcast();
 final StreamController linkHandlingStreamController =
-    StreamController.broadcast();
+StreamController.broadcast();
 final StreamController webviewStreamController = StreamController.broadcast();
 
 extension ParseToString on FaqFilterType {
@@ -130,13 +130,13 @@ class Freshchat {
   /// [appId], [appKey] and [domain] can be found in Mobile SDK settings page of your Freshchat account.
   static void init(String appId, String appKey, String domain,
       {bool responseExpectationEnabled = true,
-      bool teamMemberInfoVisible = true,
-      bool cameraCaptureEnabled = true,
-      bool gallerySelectionEnabled = true,
-      bool userEventsTrackingEnabled = true,
-      String? stringsBundle,
-      String? themeName,
-      bool errorLogsEnabled = true}) async {
+        bool teamMemberInfoVisible = true,
+        bool cameraCaptureEnabled = true,
+        bool gallerySelectionEnabled = true,
+        bool userEventsTrackingEnabled = true,
+        String? stringsBundle,
+        String? themeName,
+        bool errorLogsEnabled = true}) async {
     await _channel.invokeMethod('init', <String, dynamic>{
       'appId': appId,
       'appKey': appKey,
@@ -182,7 +182,7 @@ class Freshchat {
   static Future<FreshchatUser> get getUser async {
     final Map userDetails = await _channel.invokeMethod('getUser');
     FreshchatUser user =
-        new FreshchatUser(userDetails["externalId"], userDetails["restoreId"]);
+    new FreshchatUser(userDetails["externalId"], userDetails["restoreId"]);
     user.setEmail(userDetails["email"]);
     user.setFirstName(userDetails["firstName"]);
     user.setLastName(userDetails["lastName"]);
@@ -209,14 +209,14 @@ class Freshchat {
   /// Displays the FAQ Categories Page (Category List Activity) from where users can view and search FAQs
   static void showFAQ(
       {String? faqTitle,
-      String? contactUsTitle,
-      List<String>? faqTags,
-      List<String>? contactUsTags,
-      FaqFilterType faqFilterType:FaqFilterType.Category,
-      bool showContactUsOnFaqScreens = true,
-      bool showFaqCategoriesAsGrid = true,
-      bool showContactUsOnAppBar = false,
-      bool showContactUsOnFaqNotHelpful = true}) async {
+        String? contactUsTitle,
+        List<String>? faqTags,
+        List<String>? contactUsTags,
+        required FaqFilterType faqFilterType,
+        bool showContactUsOnFaqScreens = true,
+        bool showFaqCategoriesAsGrid = true,
+        bool showContactUsOnAppBar = false,
+        bool showContactUsOnFaqNotHelpful = true}) async {
     if (faqTitle == null &&
         contactUsTitle == null &&
         faqTags == null &&
@@ -251,7 +251,7 @@ class Freshchat {
   /// Retrieve a count of unread messages across all unrestricted/public channels for the user asynchronously.
   static Future<Map> get getUnreadCountAsync async {
     final Map unreadCountStatus =
-        await _channel.invokeMethod('getUnreadCountAsync');
+    await _channel.invokeMethod('getUnreadCountAsync');
     return unreadCountStatus;
   }
 
@@ -374,11 +374,11 @@ class Freshchat {
   /// Accepts Notification configurations allowing you to configure all the notification related parameters (Android)
   static void setNotificationConfig(
       {Priority priority = Priority.PRIORITY_DEFAULT,
-      Importance importance = Importance.IMPORTANCE_DEFAULT,
-      bool notificationSoundEnabled = true,
-      bool notificationInterceptionEnabled = false,
-      String? largeIcon,
-      String? smallIcon}) async {
+        Importance importance = Importance.IMPORTANCE_DEFAULT,
+        bool notificationSoundEnabled = true,
+        bool notificationInterceptionEnabled = false,
+        String? largeIcon,
+        String? smallIcon}) async {
     await _channel.invokeMethod(
       'setNotificationConfig',
       <String, dynamic>{
@@ -402,7 +402,7 @@ class Freshchat {
   /// Check if the notification received with the provided intent is a Freshchat notification or not (Android)
   static Future<bool> isFreshchatNotification(Map pushPayload) async {
     bool isFreshchatNotification =
-        await _channel.invokeMethod("isFreshchatNotification", <String, Map>{
+    await _channel.invokeMethod("isFreshchatNotification", <String, Map>{
       'pushPayload': pushPayload,
     });
     return isFreshchatNotification;
